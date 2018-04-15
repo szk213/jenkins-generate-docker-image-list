@@ -4,8 +4,7 @@ pipeline {
     stage('DR image list') {
       steps {
         script {
-          params.harborRequestResponse = httpRequest "http://192.168.0.150/api/repositories/abc%2Ftest/tags"
-          println('Content: '+ params.harborRequestResponse.content)
+          httpRequest "http://192.168.0.150/api/repositories/abc%2Ftest/tags"
         }
 
       }
