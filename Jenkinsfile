@@ -4,9 +4,11 @@ pipeline {
     stage('DR image list') {
       steps {
         script {
-          httpRequest "http://192.168.0.150/api/repositories/abc%2Ftest/tags"
+          response = httpRequest "http://192.168.0.150/api/repositories/abc%2Ftest/tags"
+          params.res = response.content
         }
 
+        sh 'echo ${params.res}'
       }
     }
   }
