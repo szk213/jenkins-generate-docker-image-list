@@ -3,7 +3,11 @@ pipeline {
   stages {
     stage('DR image list') {
       steps {
-        sh 'echo test'
+        script {
+          params.harborRequestResponse = httpRequest "http://192.168.0.150/api/repositories/abc%2Ftest/tags"
+        }
+
+        sh 'echo ${params.harborRequestResponse}'
       }
     }
   }
