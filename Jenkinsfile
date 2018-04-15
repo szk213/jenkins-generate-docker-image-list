@@ -14,6 +14,7 @@ pipeline {
         }
 
         sh "echo '${response.content}'"
+        archiveArtifacts 'taglist.yaml'
       }
     }
   }
