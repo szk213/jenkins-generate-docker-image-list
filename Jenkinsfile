@@ -9,6 +9,8 @@ pipeline {
           props.each{
             println it.name
           }
+          taglist = props.collectMany{ it["name"] }
+          writeYaml file: 'taglist.yaml', data: taglist
         }
 
         sh "echo '${response.content}'"
